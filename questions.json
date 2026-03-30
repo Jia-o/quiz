@@ -1,0 +1,162 @@
+{
+  "questions": [
+    {
+      "question": "What keyword is used to define a function in Python?",
+      "type": "multiple_choice",
+      "options": ["func", "define", "def", "function"],
+      "answer": "def",
+      "category": "Python Basics",
+      "difficulty": "easy"
+    },
+    {
+      "question": "A list in Python is immutable.",
+      "type": "true_false",
+      "answer": "false",
+      "category": "Data Structures",
+      "difficulty": "easy"
+    },
+    {
+      "question": "What built-in function returns the number of items in a list?",
+      "type": "short_answer",
+      "answer": "len",
+      "category": "Python Basics",
+      "difficulty": "easy"
+    },
+    {
+      "question": "Which data type is used to store key-value pairs?",
+      "type": "multiple_choice",
+      "options": ["list", "tuple", "dictionary", "set"],
+      "answer": "dictionary",
+      "category": "Data Structures",
+      "difficulty": "easy"
+    },
+    {
+      "question": "What does the 'break' statement do?",
+      "type": "short_answer",
+      "answer": "exits loop",
+      "category": "Control Flow",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Which of the following is used to handle exceptions in Python?",
+      "type": "multiple_choice",
+      "options": ["try/except", "catch/finally", "error/handle", "check/rescue"],
+      "answer": "try/except",
+      "category": "Control Flow",
+      "difficulty": "easy"
+    },
+    {
+      "question": "Python is a compiled language.",
+      "type": "true_false",
+      "answer": "false",
+      "category": "Python Basics",
+      "difficulty": "easy"
+    },
+    {
+      "question": "What symbol is used to start a comment in Python?",
+      "type": "short_answer",
+      "answer": "#",
+      "category": "Python Basics",
+      "difficulty": "easy"
+    },
+    {
+      "question": "Which method adds an element to the end of a list?",
+      "type": "multiple_choice",
+      "options": ["add()", "push()", "append()", "insert()"],
+      "answer": "append()",
+      "category": "Data Structures",
+      "difficulty": "easy"
+    },
+    {
+      "question": "A tuple in Python is mutable.",
+      "type": "true_false",
+      "answer": "false",
+      "category": "Data Structures",
+      "difficulty": "easy"
+    },
+    {
+      "question": "What keyword is used to create a class in Python?",
+      "type": "short_answer",
+      "answer": "class",
+      "category": "Object-Oriented Programming",
+      "difficulty": "easy"
+    },
+    {
+      "question": "Which of the following correctly creates a set in Python?",
+      "type": "multiple_choice",
+      "options": ["{1, 2, 3}", "[1, 2, 3]", "(1, 2, 3)", "<1, 2, 3>"],
+      "answer": "{1, 2, 3}",
+      "category": "Data Structures",
+      "difficulty": "medium"
+    },
+    {
+      "question": "What does the 'continue' statement do in a loop?",
+      "type": "multiple_choice",
+      "options": [
+        "Exits the loop",
+        "Skips to the next iteration",
+        "Restarts the loop from the beginning",
+        "Pauses the loop"
+      ],
+      "answer": "Skips to the next iteration",
+      "category": "Control Flow",
+      "difficulty": "medium"
+    },
+    {
+      "question": "In Python, what is the output of: type(3.14)?",
+      "type": "short_answer",
+      "answer": "<class 'float'>",
+      "category": "Python Basics",
+      "difficulty": "medium"
+    },
+    {
+      "question": "What function is used to call a method from a parent class in Python?",
+      "type": "short_answer",
+      "answer": "super",
+      "category": "Object-Oriented Programming",
+      "difficulty": "hard"
+    },
+    {
+      "question": "What does 'lambda' create in Python?",
+      "type": "multiple_choice",
+      "options": [
+        "A loop",
+        "An anonymous function",
+        "A class instance",
+        "A module"
+      ],
+      "answer": "An anonymous function",
+      "category": "Python Basics",
+      "difficulty": "medium"
+    },
+    {
+      "question": "Dictionaries in Python maintain insertion order (Python 3.7+).",
+      "type": "true_false",
+      "answer": "true",
+      "category": "Data Structures",
+      "difficulty": "medium"
+    },
+    {
+      "question": "What built-in function converts a string to an integer?",
+      "type": "short_answer",
+      "answer": "int",
+      "category": "Python Basics",
+      "difficulty": "easy"
+    },
+    {
+      "question": "Which of the following is NOT a valid Python loop?",
+      "type": "multiple_choice",
+      "options": ["for", "while", "do-while", "for-in"],
+      "answer": "do-while",
+      "category": "Control Flow",
+      "difficulty": "medium"
+    },
+    {
+      "question": "What method is called when a new object is created from a class?",
+      "type": "short_answer",
+      "answer": "__init__",
+      "category": "Object-Oriented Programming",
+      "difficulty": "medium"
+    }
+  ]
+}
