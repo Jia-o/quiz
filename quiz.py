@@ -22,6 +22,9 @@ TIMER_BY_DIFFICULTY = {
     "hard": 25,
 }
 
+# Supported question types
+ALLOWED_QUESTION_TYPES = {"multiple_choice", "true_false", "fill_in_the_blank"}
+
 
 # ---------------------------------------------------------------------------
 # Question loading & filtering
@@ -39,7 +42,17 @@ def load_questions():
         raise ValueError(
             "Invalid question bank format: missing 'questions' key."
         )
-    return data["questions"]
+    all_qs = data["questions"]
+    questions = []
+    for q in all_qs:
+        if q.get("type") in ALLOWED_QUESTION_TYPES:
+            questions.append(q)
+        else:
+            print(
+                f"⚠️  Skipping question with unsupported type "
+                f"'{q.get('type')}': {q.get('question', '')[:60]}"
+            )
+    return questions
 
 
 def get_categories(questions):
@@ -163,7 +176,7 @@ def _get_answer_with_timeout(question, time_limit):
     Returns:
         (answer: str | None, timed_out: bool)
     """
-    q_type = question.get("type", "short_answer")
+    q_type = question.get("type", "fill_in_the_blank")
     options = question.get("options", [])
 
     if q_type == "multiple_choice":
@@ -191,7 +204,7 @@ def _get_answer_with_timeout(question, time_limit):
 # ---------------------------------------------------------------------------
 
 def _display_question(num, total, question, time_limit):
-    q_type = question.get("type", "short_answer")
+    q_type = question.get("type", "fill_in_the_blank")
     print(f"\n{'=' * 50}")
     print(
         f"Question {num}/{total}  "
@@ -218,7 +231,7 @@ def _check_answer(question, user_answer):
     if user_answer is None:
         return False
 
-    q_type = question.get("type", "short_answer")
+    q_type = question.get("type", "fill_in_the_blank")
     correct = question["answer"].strip().lower()
     user = user_answer.strip().lower()
 
@@ -244,7 +257,7 @@ def _check_answer(question, user_answer):
             normalised = user
         return normalised == correct
 
-    # short_answer: exact match (case-insensitive)
+    # fill_in_the_blank: exact match (case-insensitive)
     return user == correct
 
 

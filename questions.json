@@ -17,7 +17,7 @@
     },
     {
       "question": "What built-in function returns the number of items in a list?",
-      "type": "short_answer",
+      "type": "fill_in_the_blank",
       "answer": "len",
       "category": "Python Basics",
       "difficulty": "easy"
@@ -32,7 +32,7 @@
     },
     {
       "question": "What does the 'break' statement do?",
-      "type": "short_answer",
+      "type": "fill_in_the_blank",
       "answer": "exits loop",
       "category": "Control Flow",
       "difficulty": "medium"
@@ -54,7 +54,7 @@
     },
     {
       "question": "What symbol is used to start a comment in Python?",
-      "type": "short_answer",
+      "type": "fill_in_the_blank",
       "answer": "#",
       "category": "Python Basics",
       "difficulty": "easy"
@@ -76,7 +76,7 @@
     },
     {
       "question": "What keyword is used to create a class in Python?",
-      "type": "short_answer",
+      "type": "fill_in_the_blank",
       "answer": "class",
       "category": "Object-Oriented Programming",
       "difficulty": "easy"
@@ -104,14 +104,14 @@
     },
     {
       "question": "In Python, what is the output of: type(3.14)?",
-      "type": "short_answer",
+      "type": "fill_in_the_blank",
       "answer": "<class 'float'>",
       "category": "Python Basics",
       "difficulty": "medium"
     },
     {
       "question": "What function is used to call a method from a parent class in Python?",
-      "type": "short_answer",
+      "type": "fill_in_the_blank",
       "answer": "super",
       "category": "Object-Oriented Programming",
       "difficulty": "hard"
@@ -138,7 +138,7 @@
     },
     {
       "question": "What built-in function converts a string to an integer?",
-      "type": "short_answer",
+      "type": "fill_in_the_blank",
       "answer": "int",
       "category": "Python Basics",
       "difficulty": "easy"
@@ -153,7 +153,7 @@
     },
     {
       "question": "What method is called when a new object is created from a class?",
-      "type": "short_answer",
+      "type": "fill_in_the_blank",
       "answer": "__init__",
       "category": "Object-Oriented Programming",
       "difficulty": "medium"
