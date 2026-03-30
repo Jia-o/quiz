@@ -26,7 +26,7 @@ Make a python quiz app with the following properties:
   - Average quiz score
   - Categories with best / worst accuracy
 6) Question bank JSON file data format
-{
+`{
  "questions": [
    {
      "question": "What keyword is used to define a function in Python?",
@@ -61,7 +61,7 @@ Make a python quiz app with the following properties:
      "category": "Control Flow",
    }
  ]
-}
+}`
 7) File structure and error handling
   - main.py (main entry point, login + menu selection) --> quiz.py (quiz-taking platform + result display) --> stats.py (statistics tracking)
 8) Automatically logs user out when tab is closed 
