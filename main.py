@@ -38,7 +38,7 @@ def _save_users(users):
     """Persist the users dict to disk."""
     with open(USERS_FILE, "w") as f:
         json.dump(users, f, indent=2)
-
+ 
 
 def _hash_password(password, salt=None):
     """
