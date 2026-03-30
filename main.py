@@ -7,12 +7,15 @@ Automatically logs the user out when the terminal session ends (SIGHUP).
 import atexit
 import getpass
 import hashlib
+import hmac
 import json
 import os
+import re
 import signal
 import sys
 
 USERS_FILE = "users.json"
+_SALT_BYTES = 32  # bytes of entropy for each user's password salt
 
 
 # ---------------------------------------------------------------------------
@@ -37,9 +40,31 @@ def _save_users(users):
         json.dump(users, f, indent=2)
 
 
-def _hash_password(password):
-    """Return the SHA-256 hex digest of *password*."""
-    return hashlib.sha256(password.encode()).hexdigest()
+def _hash_password(password, salt=None):
+    """
+    Return (salt, hash) using PBKDF2-HMAC-SHA256.
+    If *salt* is None a new random salt is generated.
+    """
+    if salt is None:
+        salt = os.urandom(_SALT_BYTES).hex()
+    dk = hashlib.pbkdf2_hmac(
+        "sha256", password.encode("utf-8"), salt.encode("utf-8"), 260_000
+    )
+    return salt, dk.hex()
+
+
+def _verify_password(password, stored_hash, stored_salt):
+    """Return True if *password* matches the stored PBKDF2 hash."""
+    _, dk = _hash_password(password, stored_salt)
+    return hmac.compare_digest(dk, stored_hash)
+
+
+def _is_valid_username(username):
+    """
+    Return True if *username* contains only safe characters.
+    This also prevents path-traversal when the username is used in file names.
+    """
+    return bool(re.match(r"^[a-zA-Z0-9_\-]{1,50}$", username))
 
 
 # ---------------------------------------------------------------------------
@@ -64,13 +89,23 @@ def login():
             print("❌ Username cannot be empty.")
             continue
 
+        if not _is_valid_username(username):
+            print(
+                "❌ Username may only contain letters, numbers, underscores, "
+                "and hyphens (1–50 characters)."
+            )
+            continue
+
         password = getpass.getpass("Password: ")
         if not password:
             print("❌ Password cannot be empty.")
             continue
 
         if username in users:
-            if users[username]["password"] == _hash_password(password):
+            stored = users[username]
+            stored_hash = stored.get("password", "")
+            stored_salt = stored.get("salt", "")
+            if stored_hash and stored_salt and _verify_password(password, stored_hash, stored_salt):
                 print(f"\n✅ Login successful! Welcome back, {username}.")
                 return username
             print("❌ Incorrect password. Please try again.")
@@ -80,7 +115,8 @@ def login():
             if choice == "y":
                 confirm = getpass.getpass("Confirm password: ")
                 if password == confirm:
-                    users[username] = {"password": _hash_password(password)}
+                    salt, hashed = _hash_password(password)
+                    users[username] = {"password": hashed, "salt": salt}
                     _save_users(users)
                     print(f"✅ Account created! Welcome, {username}.")
                     return username

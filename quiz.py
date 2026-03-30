@@ -133,7 +133,7 @@ def weighted_sample(questions, num_questions, username):
         total_weight = sum(pool_weights)
         r = random.uniform(0, total_weight)
         cumulative = 0.0
-        chosen = 0
+        chosen = len(pool) - 1  # default to last to avoid floating-point overshoot
         for i, w in enumerate(pool_weights):
             cumulative += w
             if r <= cumulative:
